@@ -6,7 +6,7 @@ Created on Wed Nov 11 20:08:40 2020
 """
 
 import matplotlib.pyplot as plt
-
+import random
         
 def FCFS(pages, cap):    
     frames = []
@@ -114,6 +114,14 @@ def optimal(pg, cap):
 if __name__ == '__main__': 
     pages = [3, 1, 6, 5, 3, 4, 6,  
                 8, 7, 1, 0, 5, 4,6,2,3,0,1]  
+    y_axis = []
+    rand_pages = []
+    for i in range(100):
+        rand_pages.append(random.randrange(0,49))
+
+        
+        
+    print(rand_pages)   
     n = len(pages)  
     capacity = 3
     
@@ -123,16 +131,16 @@ if __name__ == '__main__':
     opt = []
     
     
-    print(FCFS(pages,capacity))
-    print(LRU(pages,capacity))
-    print(optimal(pages,capacity))
+    print(FCFS(rand_pages,capacity))
+    print(LRU(rand_pages,capacity))
+    print(optimal(rand_pages,capacity))
 
 
-    for i in range(10):
-        cap_list.append(i+1)
-        fcfs.append(FCFS(pages,i+1))
-        lru.append(LRU(pages,i+1))
-        opt.append(optimal(pages,i+1))
+    for i in range(30):
+        cap_list.append((i+1)*4)
+        fcfs.append(FCFS(rand_pages,i+1))
+        lru.append(LRU(rand_pages,i+1))
+        opt.append(optimal(rand_pages,i+1))
     
 plt.plot(fcfs, cap_list, label = "fcfs")
 plt.plot(lru, cap_list, label = "lru")
